@@ -264,3 +264,39 @@ balancedTree.insert(2);
 console.log(isBalanced(balancedTree));
 balancedTree.insert(4);
 console.log(isBalanced(balancedTree));
+
+function sameBST(array1, array2) {
+  if (array1[0] !== array2[0]) {
+    return false;
+  }
+  if (array1.length !== array2.length) {
+    return false;
+  }
+  if (array1.length === 1 && array2.length === 1) {
+    return true;
+  }
+  let array1Higher = [];
+  let array2Higher = [];
+  for (let i = 1; i < array1.length; i++) {
+    if (array1[i] > array1[0]) {
+      array1Higher.push(array1[i]);
+    }
+    if (array2[i] > array2[0]) {
+      array2Higher.push(array2[i]);
+    }
+  }
+  let array1Lower = [];
+  let array2Lower = [];
+  for (let k = 1; k < array1.length; k++) {
+    if (array1[k] < array1[0]) {
+      array1Lower.push(array1[k]);
+    }
+    if (array2[k] < array2[0]) {
+      array2Lower.push(array2[k]);
+    }
+  }
+  return sameBST(array1Higher, array2Higher) && sameBST(array1Lower, array2Lower);
+}
+
+console.log(sameBST([3,5,4,6,1,0,2], [3,1,5,2,4,6,0]));
+console.log(sameBST([3,5,4,6,1,0,2], [3,0,1,5,2,4,6]));
