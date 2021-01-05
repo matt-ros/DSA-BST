@@ -173,3 +173,22 @@ console.log(BST2);
 // Results are different from the first exercise.
 // I assumed that duplicates were not allowed, so I just left them out of my drawing.
 // However, the code does allow duplicates and pushes them to the right side of the tree.
+
+// 4. This program adds the values of all nodes in a BST.  Its runtime is linear O(n).
+
+function treeHeight(bst) {
+  if (!bst) {
+    return 0;
+  }
+  if (!bst.left && !bst.right) {
+    return 1;
+  }
+  let height = treeHeight(bst.left);
+  let rightHeight = treeHeight(bst.right);
+  if (rightHeight > height) {
+    height = rightHeight;
+  }
+  return height + 1;
+}
+
+console.log(treeHeight(BST))
