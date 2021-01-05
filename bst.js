@@ -213,3 +213,37 @@ function isBST(bst) {
 
 console.log(isBST(BST));
 console.log(isBST(BST2));
+
+function thirdLargestNode(bst) {
+  let currNode = bst;
+  while (currNode.right !== null) {
+    currNode = currNode.right;
+  }
+  if (!currNode.left) {
+    currNode = currNode.parent;
+    if (currNode.left) {
+      return currNode.left.key;
+    }
+    else {
+      return currNode.parent.key;
+    }
+  }
+  let secondLargest = currNode.left;
+  if (!secondLargest.left && !secondLargest.right) {
+    return currNode.parent.key;
+  }
+  while (secondLargest.right !== null) {
+    secondLargest = secondLargest.right;
+  }
+  if (secondLargest.left) {
+    return secondLargest.left.key;
+  }
+  else {
+    return secondLargest.parent.key;
+  }
+}
+
+console.log(thirdLargestNode(BST));
+console.log(thirdLargestNode(BST2));
+// thirdLargestNode() will always return the correct value if there are no duplicates.
+// If there are duplicates, it may or may not return the correct value depending on the positioning of the duplicates in the particular tree.
