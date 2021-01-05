@@ -191,4 +191,25 @@ function treeHeight(bst) {
   return height + 1;
 }
 
-console.log(treeHeight(BST))
+console.log(treeHeight(BST));
+
+function isBST(bst) {
+  if (!bst) {
+    return true;
+  }
+  if (!bst.left && !bst.right) {
+    return true;
+  }
+  if (!bst.left && bst.right) {
+    return bst.key < bst.right.key;
+  }
+  if (bst.left && !bst.right) {
+    return bst.left.key < bst.key;
+  }
+  if (bst.left && bst.right) {
+    return isBST(bst.left) && isBST(bst.right);
+  }
+}
+
+console.log(isBST(BST));
+console.log(isBST(BST2));
