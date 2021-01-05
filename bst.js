@@ -247,3 +247,20 @@ console.log(thirdLargestNode(BST));
 console.log(thirdLargestNode(BST2));
 // thirdLargestNode() will always return the correct value if there are no duplicates.
 // If there are duplicates, it may or may not return the correct value depending on the positioning of the duplicates in the particular tree.
+
+function isBalanced(bst) {
+  const heightDifference = treeHeight(bst.left) - treeHeight(bst.right);
+  return heightDifference <= 1 && heightDifference >= -1;
+}
+
+console.log(isBalanced(BST));
+console.log(isBalanced(BST2));
+const balancedTree = new BinarySearchTree();
+balancedTree.insert(3);
+console.log(isBalanced(balancedTree));
+balancedTree.insert(1);
+console.log(isBalanced(balancedTree));
+balancedTree.insert(2);
+console.log(isBalanced(balancedTree));
+balancedTree.insert(4);
+console.log(isBalanced(balancedTree));
